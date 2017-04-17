@@ -1,0 +1,22 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://radig.com/plugins/loopor>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-loopor.html> ;
+        modgui:stylesheet <modgui/stylesheet-loopor.css> ;
+        modgui:screenshot <modgui/screenshot-loopor.png> ;
+        modgui:thumbnail <modgui/thumbnail-loopor.png> ;
+        modgui:brand "Stevie" ;
+        modgui:label "Loopor" ;
+        modgui:model "boxy" ;
+        modgui:panel "1-knob" ;
+        modgui:color "cyan" ;
+        modgui:knob "blue" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "threshold" ;
+            lv2:name "Threshold" ;
+        ] ;
+    ] .

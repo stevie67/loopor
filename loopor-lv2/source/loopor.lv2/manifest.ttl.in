@@ -3,4 +3,4 @@
 
 <http://radig.com/plugins/loopor> a lv2:Plugin .
 <http://radig.com/plugins/loopor> lv2:binary <loopor.so> .
-<http://radig.com/plugins/loopor> rdfs:seeAlso <loopor.ttl> .
+<http://radig.com/plugins/loopor> rdfs:seeAlso <loopor.ttl>, <modgui.ttl> .
