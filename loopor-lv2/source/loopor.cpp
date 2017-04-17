@@ -47,6 +47,7 @@ static const size_t NR_OF_DUBS = 128;
 /// after the loop start and/or finishes before the end of the loop
 /// it will consume less memory.
 static const size_t STORAGE_MEMORY_SECONDS = 360;
+static const size_t NR_OF_BLEND_SAMPLES = 64;
 /// Allow to enable logging to a file (/root/loopor.log)
 static const bool LOG_ENABLED = false;
 
@@ -533,7 +534,7 @@ private:
         // Fixup the start and the end of the loop. We simply fade in and out over
         // 32 samples for now. Not sure if that's good for everything, seems to work
         // nicely enough, though.
-        size_t length = dub.m_length > 32 ? 32 : dub.m_length;
+        size_t length = dub.m_length > NR_OF_BLEND_SAMPLES ? NR_OF_BLEND_SAMPLES : dub.m_length;
         size_t startIndex = dub.m_storageOffset;
         size_t endIndex = dub.m_storageOffset + dub.m_length - 1;
         for (size_t s = 0; s < length; s++)
