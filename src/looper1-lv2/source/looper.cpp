@@ -46,7 +46,7 @@ static const bool LOG_ENABLED = false;
 ///
 /// Convert an input parameter expressed as db into a linear float value
 ///
-static float dbToFloat(float db) 
+static float dbToFloat(float db)
 {
     if (db <= -90.0f)
         return 0.0f;
@@ -56,7 +56,7 @@ static float dbToFloat(float db)
 ///
 /// Represent the state of the dub
 ///
-typedef enum 
+typedef enum
 {
     // The looper does not have an active dub and is not recording.
     LOOPER_STATE_INACTIVE,
@@ -152,7 +152,7 @@ public:
         m_callback(state, now - m_lastChangeTime, doubleClick);
         m_lastChangeTime = now;
     }
-    
+
     /// The callback
     /// \param bool pressed Is the button pressed or released?
     /// \param double How long since the last state change?
@@ -294,17 +294,17 @@ public:
     void run(uint32_t nrOfSamples)
     {
         updateParameters();
-        
+
         m_now += double(nrOfSamples) / m_sampleRate;
         if (m_state == LOOPER_STATE_INACTIVE)
         {
-            for (uint32_t s = 0; s < nrOfSamples; ++s) 
+            for (uint32_t s = 0; s < nrOfSamples; ++s)
             {
                 m_output1[s] = m_input1[s];
                 m_output2[s] = m_input2[s];
             }
             return;
-        } 
+        }
 
         for (uint32_t s = 0; s < nrOfSamples; ++s)
         {
@@ -458,7 +458,7 @@ private:
         if (m_logFile == NULL)
             return;
 
-        char buffer[2048];        
+        char buffer[2048];
         va_list argumentList;
         va_start(argumentList, formatString);
         vsnprintf(&buffer[0], sizeof(buffer), formatString, argumentList);
@@ -554,7 +554,7 @@ private:
     {
         if (m_state == LOOPER_STATE_RECORDING)
             // When we are recording, we interpret undo as undoing the current recording.
-            // So we simply finish it and then immediately undo. 
+            // So we simply finish it and then immediately undo.
             finishRecording();
         if (m_nrOfDubs == 0)
             // Nothing to undo.
@@ -589,7 +589,7 @@ private:
 
         // Can redo!
         Dub& dub = m_dubs[m_nrOfDubs];
-        // Make sure that we do not overwrite the dubs audio data when recording 
+        // Make sure that we do not overwrite the dubs audio data when recording
         // next time.
         m_nrOfUsedSamples = dub.m_storageOffset + dub.m_length;
         if (m_nrOfDubs == 0)
@@ -618,10 +618,10 @@ private:
 //
 // The functions required by the LV2 interface. Simply forward to the Looper class.
 //
-static LV2_Handle instantiate(const LV2_Descriptor* descriptor, double rate, const char* bundlePath, 
+static LV2_Handle instantiate(const LV2_Descriptor* descriptor, double rate, const char* bundlePath,
     const LV2_Feature* const* features)
 {
-	return (LV2_Handle)new Looper(rate);
+    return (LV2_Handle)new Looper(rate);
 }
 static void activate(LV2_Handle instance) {}
 static void deactivate(LV2_Handle instance) {}
@@ -641,24 +641,24 @@ static void run(LV2_Handle instance, uint32_t nrOfSamples)
 ///
 /// Descriptors for the various functions called by the LV2 host
 ///
-static const LV2_Descriptor descriptor = 
+static const LV2_Descriptor descriptor =
 {
     /// The URI which identifies the plugin
-	LOOPER_URI,
+    LOOPER_URI,
     /// Instantiate the plugin.
-	instantiate,
+    instantiate,
     /// Connect a port, called once for each port.
-	connectPort,
+    connectPort,
     /// Activate the plugin (unused).
-	activate,
+    activate,
     /// Process a bunch of samples.
-	run,
+    run,
     /// Deactivate the plugin (unused).
-	deactivate,
+    deactivate,
     /// Cleanup, will destroy the plugin.
-	cleanup,
+    cleanup,
     /// Get information about used extensions (unused).
-	extensionData
+    extensionData
 };
 
 ///
@@ -666,9 +666,9 @@ static const LV2_Descriptor descriptor =
 ///
 LV2_SYMBOL_EXPORT const LV2_Descriptor* lv2_descriptor(uint32_t index)
 {
-	switch (index) 
+    switch (index)
     {
-    	case 0:  return &descriptor;
-    	default: return NULL;
-	}
+        case 0:  return &descriptor;
+        default: return NULL;
+    }
 }
