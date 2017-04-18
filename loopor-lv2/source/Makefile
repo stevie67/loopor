@@ -15,12 +15,11 @@ DESTDIR ?=
 # Default target is to build all plugins
 
 all: build
-build: loopor
 
 # --------------------------------------------------------------
 # loopor build rules
 
-loopor: loopor.lv2/looper$(LIB_EXT) loopor.lv2/manifest.ttl
+build: loopor.lv2/looper$(LIB_EXT) loopor.lv2/manifest.ttl
 
 loopor.lv2/looper$(LIB_EXT): loopor.cpp
 	$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) -lm $(SHARED) -o $@
