@@ -1,5 +1,5 @@
 # loopor
-Looper plugin for LV2, specifically for the Mod Duo pedal board. Binary only, currently!
+Looper plugin for LV2, specifically for the Mod Duo pedal board.
 
 NOTE: This is a very early version, no warranty for anything is taken! Use at your own risk (see the license).
 
