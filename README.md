@@ -10,8 +10,6 @@ Features:
 * Record / Play, Undo, Redo, Reset and Dub buttons
 * No clicks even when sounds is still playing at loop end
 
-To test, copy the "looper1.lv2" directory to Mod Duo at "/root/.lv2". That should make it available inside the Mod Duo's web interface.
-
 Usage:
 * Adjust the threshold to only start recording once playing has started. If set to the lowest value, recording will start immediately.
   Otherwise it will start recording when the first sound comes in. The threshold can be used to filter out noise. 
