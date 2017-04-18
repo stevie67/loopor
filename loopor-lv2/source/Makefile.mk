@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# Makefile for looper1.lv2 #
+# Makefile for loopor.lv2 #
 # ----------------------- #
 # Created by falkTX, Stevie
 #

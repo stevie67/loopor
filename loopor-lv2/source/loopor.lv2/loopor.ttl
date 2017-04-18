@@ -5,30 +5,30 @@
 @prefix pprops: <http://lv2plug.in/ns/ext/port-props#>.
 @prefix units: <http://lv2plug.in/ns/extensions/units#> .
 
-<http://radig.com/plugins/looper1>
+<http://radig.com/plugins/loopor>
 	a lv2:Plugin, lv2:UtilityPlugin;
 	lv2:project <http://lv2plug.in/ns/lv2>;
 	doap:name "Loopor";
 	doap:license <http://opensource.org/licenses/isc>;
-	lv2:port 
+	lv2:port
 		[
 			a lv2:AudioPort, lv2:InputPort;
 			lv2:index 0;
 			lv2:symbol "in1";
 			lv2:name "In1"
-		], 
+		],
 		[
 			a lv2:AudioPort, lv2:InputPort;
 			lv2:index 1;
 			lv2:symbol "in2";
 			lv2:name "In2"
-	    ], 
+	    ],
 	    [
 	        a lv2:AudioPort, lv2:OutputPort;
 	        lv2:index 2;
 	        lv2:symbol "out1";
 	        lv2:name "Out1"
-		], 
+		],
 		[
 			a lv2:AudioPort, lv2:OutputPort;
 			lv2:index 3;
@@ -94,4 +94,4 @@
 		  lv2:minimum 0;
 		  lv2:maximum 1;
 		  lv2:portProperty lv2:integer, lv2:toggled, pprops:trigger;
-		] .	
+		] .

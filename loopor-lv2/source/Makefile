@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-# Makefile for looper1.lv2 #
+# Makefile for loopor.lv2 #
 # ----------------------- #
 # Created by falkTX, Stevie
 #
@@ -15,30 +15,30 @@ DESTDIR ?=
 # Default target is to build all plugins
 
 all: build
-build: looper1
+build: loopor
 
 # --------------------------------------------------------------
-# looper1 build rules
+# loopor build rules
 
-looper1: looper1.lv2/looper$(LIB_EXT) looper1.lv2/manifest.ttl
+loopor: loopor.lv2/looper$(LIB_EXT) loopor.lv2/manifest.ttl
 
-looper1.lv2/looper$(LIB_EXT): looper.cpp
+loopor.lv2/looper$(LIB_EXT): loopor.cpp
 	$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) -lm $(SHARED) -o $@
 
-looper1.lv2/manifest.ttl: looper1.lv2/manifest.ttl.in
+loopor.lv2/manifest.ttl: loopor.lv2/manifest.ttl.in
 	sed -e "s|@LIB_EXT@|$(LIB_EXT)|" $< > $@
 
 # --------------------------------------------------------------
 
 clean:
-	rm -f looper1.lv2/looper$(LIB_EXT) looper1.lv2/manifest.ttl
+	rm -f loopor.lv2/looper$(LIB_EXT) loopor.lv2/manifest.ttl
 
 # --------------------------------------------------------------
 
 install: build
-	install -d $(DESTDIR)$(PREFIX)/lib/lv2/looper1.lv2
+	install -d $(DESTDIR)$(PREFIX)/lib/lv2/loopor.lv2
 
-	install -m 644 looper1.lv2/*.so  $(DESTDIR)$(PREFIX)/lib/lv2/looper1.lv2/
-	install -m 644 looper1.lv2/*.ttl $(DESTDIR)$(PREFIX)/lib/lv2/looper1.lv2/
+	install -m 644 loopor.lv2/*.so  $(DESTDIR)$(PREFIX)/lib/lv2/loopor.lv2/
+	install -m 644 loopor.lv2/*.ttl $(DESTDIR)$(PREFIX)/lib/lv2/loopor.lv2/
 
 # --------------------------------------------------------------

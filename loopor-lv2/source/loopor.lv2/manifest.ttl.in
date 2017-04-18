@@ -1,0 +1,6 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://radig.com/plugins/loopor> a lv2:Plugin .
+<http://radig.com/plugins/loopor> lv2:binary <loopor.so> .
+<http://radig.com/plugins/loopor> rdfs:seeAlso <loopor.ttl> .
