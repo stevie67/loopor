@@ -72,7 +72,7 @@ typedef enum
     LOOPER_STATE_WAITING_FOR_THRESHOLD,
     // The looper is recording a dub.
     LOOPER_STATE_RECORDING,
-    // The looper is still all the active dubs.
+    // The looper is still playing all the active dubs.
     LOOPER_STATE_PLAYING
 } State;
 
@@ -114,7 +114,7 @@ public:
     /// The length of the dub. Each dub can have an individual length, but they
     /// will still stay in sync!
     size_t m_length = 0;
-    /// The start index in the loop. This allows to safe the memory before there
+    /// The start index in the loop. This allows to save the memory before there
     /// is actual audio in the loop. A dub only needs the memory between the
     /// first and the last audio saved in the dub.
     size_t m_startIndex = 0;
