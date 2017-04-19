@@ -19,9 +19,9 @@ all: build
 # --------------------------------------------------------------
 # loopor build rules
 
-build: loopor.lv2/looper$(LIB_EXT) loopor.lv2/manifest.ttl
+build: loopor.lv2/loopor$(LIB_EXT) loopor.lv2/manifest.ttl
 
-loopor.lv2/looper$(LIB_EXT): loopor.cpp
+loopor.lv2/loopor$(LIB_EXT): loopor.cpp
 	$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) -lm $(SHARED) -o $@
 
 loopor.lv2/manifest.ttl: loopor.lv2/manifest.ttl.in
