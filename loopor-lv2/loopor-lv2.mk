@@ -21,7 +21,6 @@ LOOPOR_LV2_BUNDLES = loopor.lv2
 # call make with the current arguments and path. "$(@D)" is the build directory.
 LOOPOR_LV2_TARGET_MAKE = $(TARGET_MAKE_ENV) $(TARGET_CONFIGURE_OPTS) $(MAKE) -C $(@D)/source
 
-
 # build command
 define LOOPOR_LV2_BUILD_CMDS
 	$(LOOPOR_LV2_TARGET_MAKE)
