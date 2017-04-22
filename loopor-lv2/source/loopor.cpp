@@ -211,7 +211,7 @@ public:
     /// \param data A pointer to the data where the parameter will be written to.
     void connectPort(PortIndex port, void* data)
     {
-        // Install the trivial input
+        // Install the trivial ports
         switch (port)
         {
             case LOOPER_INPUT1: m_input1 = (const float*)data; return;
