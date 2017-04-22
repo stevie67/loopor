@@ -30,7 +30,7 @@ loopor.lv2/manifest.ttl: loopor.lv2/manifest.ttl.in
 # --------------------------------------------------------------
 
 clean:
-	rm -f loopor.lv2/looper$(LIB_EXT) loopor.lv2/manifest.ttl
+	rm -f loopor.lv2/loopor$(LIB_EXT) loopor.lv2/manifest.ttl
 
 # --------------------------------------------------------------
 
