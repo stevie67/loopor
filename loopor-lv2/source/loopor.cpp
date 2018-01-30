@@ -1,7 +1,7 @@
 //
 // MIT License
 //
-// Copyright 2017 Stevie <modplugins@radig.com>
+// Copyright 2018 Stevie <modplugins@radig.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -101,7 +101,9 @@ enum PortIndex
     /// Redo button
     LOOPER_REDO = 8,
     /// Dub button
-    LOOPER_DUB = 9
+    LOOPER_DUB = 9,
+    /// Amount of the dry signal in the output
+    LOOPER_DRY_AMOUNT = 10
 };
 
 ///
@@ -219,6 +221,7 @@ public:
             case LOOPER_OUTPUT1: m_output1 = (float*)data; return;
             case LOOPER_OUTPUT2: m_output2 = (float*)data; return;
             case LOOPER_THRESHOLD: m_thresholdParameter = (const float*)data; return;
+            case LOOPER_DRY_AMOUNT: m_dryAmountParameter = (const float*)data; return;
             default: break;
         }
 
@@ -308,8 +311,8 @@ public:
         {
             for (uint32_t s = 0; s < nrOfSamples; ++s)
             {
-                m_output1[s] = m_input1[s];
-                m_output2[s] = m_input2[s];
+                m_output1[s] = m_dryAmount * m_input1[s];
+                m_output2[s] = m_dryAmount * m_input2[s];
             }
             return;
         }
@@ -317,11 +320,11 @@ public:
         for (uint32_t s = 0; s < nrOfSamples; ++s)
         {
             // Use the live input
-            float out1 = m_input1[s];
-            float out2 = m_input2[s];
+            float in1 = m_input1[s];
+            float in2 = m_input2[s];
 
             // Check if we reached the threshold to start recording.
-            if (m_state == LOOPER_STATE_WAITING_FOR_THRESHOLD && (fabs(out1) >= m_threshold || fabs(out2) >= m_threshold))
+            if (m_state == LOOPER_STATE_WAITING_FOR_THRESHOLD && (fabs(in1) >= m_threshold || fabs(in2) >= m_threshold))
             {
                 Dub& dub = m_dubs[m_nrOfDubs];
                 dub.m_startIndex = m_currentLoopIndex;
@@ -331,14 +334,16 @@ public:
             // If we are recoding do the record.
             if (m_state == LOOPER_STATE_RECORDING)
             {
-                m_storage1[m_nrOfUsedSamples] = out1;
-                m_storage2[m_nrOfUsedSamples] = out2;
+                m_storage1[m_nrOfUsedSamples] = in1;
+                m_storage2[m_nrOfUsedSamples] = in2;
                 m_nrOfUsedSamples++;
                 Dub& dub = m_dubs[m_nrOfDubs];
                 dub.m_length++;
             }
 
             // Playback all active dubs.
+            float out1 = m_dryAmount * in1;
+            float out2 = m_dryAmount * in2;
             for (size_t t = 0; t < m_nrOfDubs; t++)
             {
                 Dub& dub = m_dubs[t];
@@ -385,6 +390,10 @@ private:
 
     /// Threshold parameter
     const float* m_thresholdParameter = NULL;
+
+    /// Dry amount parameter
+    const float* m_dryAmountParameter = NULL;
+
     /// Activate button
     MomentaryButton m_activateButton;
     /// Reset button
@@ -424,6 +433,8 @@ private:
     State m_state = LOOPER_STATE_INACTIVE;
     /// The stored threshold as a linear value
     float m_threshold = 0.0f;
+    /// The stored dry amount
+    float m_dryAmount = 1.0f;
     /// Where are we with the first (main) loop. The first loop governs all the loops!
     size_t m_currentLoopIndex = 0;
     /// The lenght of the main loop
@@ -615,6 +626,7 @@ private:
     void updateParameters()
     {
         m_threshold = dbToFloat(*m_thresholdParameter);
+        m_dryAmount = *m_dryAmountParameter;
         m_activateButton.run(m_now);
         m_resetButton.run(m_now);
         m_undoButton.run(m_now);

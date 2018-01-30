@@ -10,7 +10,7 @@ LOOPOR_LV2_SITE = $($(PKG)_PKGDIR)/
 
 # even though this is a local build, we still need a version number
 # bump this number if you need to force a rebuild
-LOOPOR_LV2_VERSION = 3
+LOOPOR_LV2_VERSION = 4
 
 # dependencies (list of other buildroot packages, separated by space)
 LOOPOR_LV2_DEPENDENCIES =
