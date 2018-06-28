@@ -376,9 +376,18 @@ public:
                 m_currentLoopIndex = 0;
 
                 if (m_state == LOOPER_STATE_RECORDING)
+                {
                     // Stop the recording only, if we did not have the threshold, yet.
                     // That allows to start recording right at the start of the loop.
                     finishRecording();
+                    if(m_nrOfDubs > 1)
+                    {
+                        // This is the second dub, meaning we're overdubbing so don't
+                        // actually stop recording dubs until the user clicks the
+                        // button again.
+                        startRecording();
+                    }
+                }
             }
         }
     }
