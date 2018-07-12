@@ -103,7 +103,9 @@ enum PortIndex
     /// Dub button
     LOOPER_DUB = 9,
     /// Amount of the dry signal in the output
-    LOOPER_DRY_AMOUNT = 10
+    LOOPER_DRY_AMOUNT = 10,
+    /// Select if dub ends at end of loop
+    LOOPER_CONTINUOUS_DUB = 11,
 };
 
 ///
