@@ -224,6 +224,7 @@ public:
             case LOOPER_OUTPUT2: m_output2 = (float*)data; return;
             case LOOPER_THRESHOLD: m_thresholdParameter = (const float*)data; return;
             case LOOPER_DRY_AMOUNT: m_dryAmountParameter = (const float*)data; return;
+            case LOOPER_CONINUOUS_DUB: m_continuousDubParameter = (const float*)data; return;
             default: break;
         }
 
@@ -405,6 +406,9 @@ private:
     /// Dry amount parameter
     const float* m_dryAmountParameter = NULL;
 
+    /// Continuous dub mode parameter
+    const float* m_continuousDubParameter = NULL;
+    
     /// Activate button
     MomentaryButton m_activateButton;
     /// Reset button
