@@ -1,5 +1,5 @@
 # loopor
-Looper plugin for LV2, specifically for the Mod Duo pedal board.
+Looper plugin for LV2, specifically for the Mod Devices pedal board. Tested on Mod Duo and Mod Dwarf.
 
 NOTE: This is a very early version, no warranty for anything is given! Use at your own risk (see the license).
 
@@ -28,4 +28,4 @@ Usage:
 * Press the "Dub" button to start recording a dub. When pressed while recording, the last dub is finished and immediately it starts a new 
   one.
 * Double press the "Dub" button to reset the looper, clearing all loops.
-* Note that any of those buttons can be assigned to the hardware buttons of the Mod Duo! Thus you can select which functionality you need.
+* Note that any of those buttons can be assigned to the hardware buttons of the Mod board! Thus you can select which functionality you need.
