@@ -224,7 +224,7 @@ public:
             case LOOPER_OUTPUT2: m_output2 = (float*)data; return;
             case LOOPER_THRESHOLD: m_thresholdParameter = (const float*)data; return;
             case LOOPER_DRY_AMOUNT: m_dryAmountParameter = (const float*)data; return;
-            case LOOPER_CONINUOUS_DUB: m_continuousDubParameter = (const float*)data; return;
+            case LOOPER_CONTINUOUS_DUB: m_continuousDubParameter = (const float*)data; return;
             default: break;
         }
 
