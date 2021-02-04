@@ -39,5 +39,6 @@ install: build
 
 	install -m 644 loopor.lv2/*.so  $(DESTDIR)$(PREFIX)/lib/lv2/loopor.lv2/
 	install -m 644 loopor.lv2/*.ttl $(DESTDIR)$(PREFIX)/lib/lv2/loopor.lv2/
+	cp -r loopor.lv2/modgui $(DESTDIR)$(PREFIX)/lib/lv2/loopor.lv2/
 
 # --------------------------------------------------------------
