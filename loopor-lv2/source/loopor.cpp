@@ -103,7 +103,9 @@ enum PortIndex
     /// Dub button
     LOOPER_DUB = 9,
     /// Amount of the dry signal in the output
-    LOOPER_DRY_AMOUNT = 10
+    LOOPER_DRY_AMOUNT = 10,
+    /// Select if dub ends at end of loop
+    LOOPER_CONTINUOUS_DUB = 11,
 };
 
 ///
@@ -222,6 +224,7 @@ public:
             case LOOPER_OUTPUT2: m_output2 = (float*)data; return;
             case LOOPER_THRESHOLD: m_thresholdParameter = (const float*)data; return;
             case LOOPER_DRY_AMOUNT: m_dryAmountParameter = (const float*)data; return;
+            case LOOPER_CONINUOUS_DUB: m_continuousDubParameter = (const float*)data; return;
             default: break;
         }
 
@@ -376,9 +379,18 @@ public:
                 m_currentLoopIndex = 0;
 
                 if (m_state == LOOPER_STATE_RECORDING)
+                {
                     // Stop the recording only, if we did not have the threshold, yet.
                     // That allows to start recording right at the start of the loop.
                     finishRecording();
+                    if(*m_continuousDubParameter && m_nrOfDubs > 1)
+                    {
+                        // This is the second dub, meaning we're overdubbing so don't
+                        // actually stop recording dubs until the user clicks the
+                        // button again.
+                        startRecording();
+                    }
+                }
             }
         }
     }
@@ -394,6 +406,9 @@ private:
     /// Dry amount parameter
     const float* m_dryAmountParameter = NULL;
 
+    /// Continuous dub mode parameter
+    const float* m_continuousDubParameter = NULL;
+    
     /// Activate button
     MomentaryButton m_activateButton;
     /// Reset button
