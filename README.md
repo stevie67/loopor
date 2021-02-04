@@ -1,7 +1,7 @@
 # loopor
 Looper plugin for LV2, specifically for the Mod Devices pedal board. Tested on Mod Duo and Mod Dwarf.
 
-NOTE: This is a very early version, no warranty for anything is given! Use at your own risk (see the license).
+NOTE: No warranty for anything is given! Use at your own risk (see the license).
 
 Features:
 * Stereo inputs and outputs
@@ -9,7 +9,8 @@ Features:
 * Configurable input threshold; when starting the recording it can wait until a certain threshold is reached.
 * Record / Play, Undo, Redo, Reset and Dub buttons
 * No clicks even when sounds is still playing at loop end
-* NEW: Configurable amount of dry signal routed to the outputs (added in version 4)
+* Configurable amount of dry signal routed to the outputs (added in version 4)
+* Optionally after first dub continue recording (added in version 5, thanks to ssj71)
 
 Usage:
 * Adjust the "Threshold" to only start recording once playing has started. If set to the lowest value, recording will start immediately.
@@ -29,3 +30,5 @@ Usage:
   one.
 * Double press the "Dub" button to reset the looper, clearing all loops.
 * Note that any of those buttons can be assigned to the hardware buttons of the Mod board! Thus you can select which functionality you need.
+* The parameter Continuous Dub controls if after the first dub recording continuous. The default is off, but with the on setting it behaves like
+  most other loopers.
