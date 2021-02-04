@@ -383,7 +383,7 @@ public:
                     // Stop the recording only, if we did not have the threshold, yet.
                     // That allows to start recording right at the start of the loop.
                     finishRecording();
-                    if(*m_continuousDubParameter && m_nrOfDubs > 1)
+                    if(*m_continuousDubParameter && m_nrOfDubs > 0)
                     {
                         // This is the second dub, meaning we're overdubbing so don't
                         // actually stop recording dubs until the user clicks the
