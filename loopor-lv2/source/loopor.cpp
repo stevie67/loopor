@@ -23,6 +23,7 @@
 
 #include <math.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 // Needed for the callbacks
 #include <functional>
